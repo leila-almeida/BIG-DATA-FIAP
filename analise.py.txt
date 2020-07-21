@@ -1,0 +1,28 @@
+from pyspark.sql import HiveContext;
+h = HiveContext(sc);
+df = h.sql("select * from results.resultado");
+
+
+df.count();
+
+
+dfEqMandante = df.groupBy("equipe_mandante").count();
+dfEqMandante.count();
+
+
+dfMandVitoriosos = df.filter(df["gol_equipe_mandante"] > df["gol_equipe_visitante"]).count();
+dfMandVitoriosos
+
+
+dfVisiVitoriosos =  df.filter(df["gol_equipe_mandante"] < df["gol_equipe_visitante"]).count();
+dfVisiVitoriosos;
+
+
+dfEmpate = df.filter(df["gol_equipe_mandante"] == df["gol_equipe_visitante"]).count();
+dfEmpate;
+
+
+dfPais = df.groupBy("pais").count();
+dfPais.write.mode("overwrite").saveAsTable("results.partida_pais");
+
+

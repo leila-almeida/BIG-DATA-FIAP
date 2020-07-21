@@ -1,0 +1,24 @@
+a - quantos registro existem no dataframe
+Existem 40839 registros no dataframe
+
+b - quantas equipes únicas mandantes existem no dataframe
+Existem 309 equipes mandantes
+
+c - quantas vezes as equipes mandantes saíram vitoriosas
+As equipes mandantes saíram vitoriosas 19864 vezes
+
+d - quantas vezes as equipes visitantes saíram vitoriosas
+As equipes visitantes saíram vitoriosas 11544 vezes
+
+e - quantas partidas resultaram em empate
+9431 resultaram em empate
+
+f - a partir de um dataframe, crie uma tabela no Hive com o nome de partida_pais com o
+total de partida em cadas país
+Tabela criada no database results. 
+dfPais = df.groupBy("pais").count();
+dfPais.write.mode("overwrite").saveAsTable("results.partida_pais");
+
+
+g - utilizando o hive e a tabela partida_pais, em qual país teve mais partidas.
+Teve mais partidas nos United States com 1144 partidas. 

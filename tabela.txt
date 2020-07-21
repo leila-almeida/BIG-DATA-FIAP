@@ -1,0 +1,6 @@
+use results; 
+create table resultado
+(Data date, equipe_mandante string, equipe_visitante string, gol_equipe_mandante int, 
+ gol_equipe_visitante int, torneio string, cidade string, pais string, fora_pais boolean ) 
+row format delimited fields terminated by ',' 
+location '/user/cloudera/trabalho'; 
